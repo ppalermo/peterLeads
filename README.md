@@ -1,6 +1,6 @@
-# Business Lead Generator
+# peterLeads
 
-A tool to discover and analyze potential business leads in the San Diego area, with a focus on mid-sized companies that might need digital marketing and tech solutions.
+A tool to discover and analyze potential business leads in Southern California, with a focus on mid-sized companies that might need digital marketing and tech solutions.
 
 ## Features
 
@@ -15,9 +15,9 @@ A tool to discover and analyze potential business leads in the San Diego area, w
 - Company name and contact details
 - Business type and location
 - Review counts and ratings
-- Website URLs
-- Phone numbers
-- Physical addresses
+- Website URLs and social media
+- Contact forms detection
+- WHOIS information
 
 ### 3. Web Interface
 - Interactive data table with sorting and filtering
@@ -30,8 +30,8 @@ A tool to discover and analyze potential business leads in the San Diego area, w
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/business-lead-generator.git
-cd business-lead-generator
+git clone https://github.com/yourusername/peterLeads.git
+cd peterLeads
 ```
 
 2. Create and activate a virtual environment:
@@ -45,44 +45,43 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-4. Set up environment variables in `.env`:
-```env
-YELP_API_KEY=your_yelp_api_key
-OPENAI_API_KEY=your_openai_api_key
-GOOGLE_MAPS_KEY=your_google_maps_key
-MAX_CONCURRENT_SCANS=10
+4. Set up environment variables:
+```bash
+cp .env.example .env
+# Edit .env with your API keys
 ```
 
 ## Usage
 
-### 1. Find Businesses
+1. Find Businesses:
 ```bash
 PYTHONPATH=. python src/business_finder.py
 ```
-This will:
-- Generate targeted search terms using GPT
-- Search for businesses using Yelp's API
-- Save results to `discovered_companies.json`
-- Create `all_urls.txt` for scanning
 
-### 2. Scan Websites
+2. Scan Websites:
 ```bash
 PYTHONPATH=. python src/parallel_scanner.py
 ```
-This will:
-- Scan company websites for contact information
-- Extract emails, phone numbers, and social media
-- Save results to `scan_results.csv`
 
-### 3. View Results in Web Interface
+3. View Results:
 ```bash
 PYTHONPATH=. FLASK_APP=src/app.py flask run
 ```
-Then visit http://localhost:5000 to:
-- Browse discovered companies
-- Sort and filter results
-- Export data to CSV
-- View analytics
+Then visit http://localhost:5000
+
+## API Keys Needed
+
+- [Yelp Fusion API](https://www.yelp.com/developers/documentation/v3)
+- [OpenAI API](https://platform.openai.com/)
+- [Google Custom Search API](https://developers.google.com/custom-search)
+
+## Contributing
+
+Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
 
 ## Project Structure
 ```
@@ -111,16 +110,6 @@ Then visit http://localhost:5000 to:
 - DataTables for interactive tables
 - Bootstrap for UI components
 
-## Contributing
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## License
-This project is licensed under the MIT License - see the LICENSE file for details.
-
 ## Acknowledgments
 - Yelp Fusion API
 - OpenAI GPT-3.5
@@ -133,5 +122,3 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - [ ] Add email verification
 - [ ] Integrate with CRM systems
 - [ ] Add more analytics features
-
-# peterLeads
